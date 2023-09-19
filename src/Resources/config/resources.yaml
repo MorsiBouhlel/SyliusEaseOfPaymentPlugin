@@ -1,3 +1,2 @@
 imports:
     - { resource: resources/modality.yaml }
-    - { resource: resources/productEaseOfPayment.yaml }
