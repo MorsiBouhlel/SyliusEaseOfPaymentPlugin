@@ -1,0 +1,5 @@
+{% if 'create' in app.request.attributes.get('_route') %}
+    {% include '@DotitSyliusEaseOfPaymentPlugin/Admin/EaseOfPayment/_create_form.html.twig' %}
+{% else %}
+    {% include '@DotitSyliusEaseOfPaymentPlugin/Admin/EaseOfPayment/_update_form.html.twig' %}
+{% endif %}

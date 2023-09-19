@@ -1,0 +1,20 @@
+dotit_sylius_ease_of_payment_plugin :
+    menu :
+        admin:
+            modality: Ease of payment
+    ui:
+        easeOfPayment: Ease of payment
+        modalities: Ease of payment
+        manage_ease_of_payment: Manage ease of payment
+        new_modality: New modality
+        edit_modality: Edit modality
+dotit:
+    grid:
+        modality:
+            nb_of_months: Number of Months
+            interest_rate: Interest Rate
+            min_price: Minimum Price
+            max_price: Maximum Price
+            all_taxons: All Taxons
+            taxons: Taxons
+            excluded_products: Excluded Products

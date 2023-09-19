@@ -1,0 +1,8 @@
+sylius_resource:
+    resources:
+        dotit_sylius_ease_of_payment_plugin.product_ease_of_payment:
+            driver: doctrine/orm
+            classes:
+                model: Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPayment
+                interface: Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPaymentInterface
+                factory: Sylius\Component\Resource\Factory\Factory

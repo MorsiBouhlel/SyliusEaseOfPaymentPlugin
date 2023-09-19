@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPayment" table="dotit_product_ease_of_payment">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <!-- Define the one-to-one association with ProductInterface -->
+        <one-to-one field="product" target-entity="Sylius\Component\Core\Model\ProductInterface" orphan-removal="true">
+            <join-column name="product_id" referenced-column-name="id" unique="true" />
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-column on-delete="SET NULL"/>
+        </one-to-one>
+
+        <!-- Define easeOfPaymentModalities as an array using ArrayCollection -->
+        <field name="easeOfPaymentModalities" type="json">
+            <options>
+                <option name="json_array">true</option>
+            </options>
+        </field>
+
+        <!-- Other fields and associations can be defined here -->
+        <field name="haveProductEaseOfPaymentModalities" type="boolean" />
+
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,20 @@
+dotit_sylius_ease_of_payment_plugin :
+    menu :
+        admin:
+            modality: Payement par facilité
+    ui:
+        easeOfPayment: Payement par facilité
+        modalities: Payement par facilité
+        manage_ease_of_payment: Gérer le payement par facilité
+        new_modality: Nouvelle modalité
+        edit_modality: Editer modalité
+dotit:
+    grid:
+        modality:
+            nb_of_months: Nombres de mois
+            interest_rate: Taux dinteret
+            min_price: Prix Minimum
+            max_price: Prix maximum
+            all_taxons: Tout les catégories
+            taxons: Catégories
+            excluded_products: Produits exclus

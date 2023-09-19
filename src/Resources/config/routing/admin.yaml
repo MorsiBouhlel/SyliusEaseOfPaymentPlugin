@@ -1,0 +1,2 @@
+dotit_sylius_ease_of_payment_plugin_admin_ease_of_payment:
+    resource: admin/modality.yaml

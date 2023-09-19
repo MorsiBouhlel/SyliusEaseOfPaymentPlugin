@@ -1,0 +1,17 @@
+dotit_sylius_ease_of_payment_plugin_admin_modality:
+    resource: |
+        alias: dotit_sylius_ease_of_payment_plugin.modality
+        section: admin
+        templates: "@SyliusAdmin/Crud"
+        except: ['show']
+        redirect: index
+        grid: dotit_sylius_ease_of_payment_plugin_admin_ease_of_payment
+        permission: true
+        vars:
+            all:
+                subheader: dotit_sylius_ease_of_payment_plugin.ui.manage_ease_of_payment
+                templates:
+                    form: '@DotitSyliusEaseOfPaymentPlugin/Admin/EaseOfPayment/_form.html.twig'
+            index:
+                icon: payment
+    type: sylius.resource

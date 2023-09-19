@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dotit\SyliusEaseOfPaymentPlugin\Entity\Modality" table="dotit_modality">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="nbOfMonths" type="integer" />
+        <field name="interestRate" type="float" />
+        <field name="minPrice" type="integer" nullable="true" />
+        <field name="maxPrice" type="integer" nullable="true" />
+        <field name="allTaxons" type="boolean" />
+
+        <many-to-many field="taxons" target-entity="Sylius\Component\Core\Model\TaxonInterface">
+            <join-table name="dotit_modality_taxons">
+                <join-columns>
+                    <join-column name="modality_id" referenced-column-name="id" on-delete="CASCADE" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="taxon_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="excludedProducts" target-entity="Sylius\Component\Core\Model\ProductInterface">
+            <join-table name="dotit_modality_excluded_products">
+                <join-columns>
+                    <join-column name="modality_id" referenced-column-name="id" on-delete="CASCADE" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

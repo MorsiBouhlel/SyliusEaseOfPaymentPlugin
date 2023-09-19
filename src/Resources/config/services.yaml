@@ -1,0 +1,42 @@
+services:
+    # Services for your entities
+    Dotit\SyliusEaseOfPaymentPlugin\Entity\Modality:
+        class: Dotit\SyliusEaseOfPaymentPlugin\Entity\Modality
+        tags:
+            - { name: doctrine.orm.entity }
+    Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPayment:
+        class: Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPayment
+    Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPaymentInterface:
+        class: Dotit\SyliusEaseOfPaymentPlugin\Entity\ProductEaseOfPayment
+    # Services for your Menus
+    dotit_sylius_ease_of_payment_plugin.event_listener.admin.menu_builder:
+        class: Dotit\SyliusEaseOfPaymentPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+    dotit_sylius_ease_of_payment_plugin.menu_builder.admin.ease_of_payment_form:
+        class: Dotit\SyliusEaseOfPaymentPlugin\Menu\EaseOfPaymentFormMenuBuilder
+        arguments:
+            - '@knp_menu.factory'
+            - '@event_dispatcher'
+        tags:
+            - { name: knp_menu.menu_builder, method: createMenu, alias: dotit_sylius_ease_of_payment_plugin.admin.ease_of_payment_form }
+    # Services for your commands
+    Dotit\SyliusEaseOfPaymentPlugin\Command\UpdateProductEaseOfPaymentCommand:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+            $modalityRepository: '@Dotit\SyliusEaseOfPaymentPlugin\Repository\ModalityRepository'
+            $channelRepository: '@sylius.repository.channel'
+            $productEaseOfPaymentRepository: '@Dotit\SyliusEaseOfPaymentPlugin\Repository\ProductEaseOfPaymentRepository'
+        tags:
+            - { name: 'console.command' }
+    # Services for your repositories
+    Dotit\SyliusEaseOfPaymentPlugin\Repository\ModalityRepository:
+        arguments:
+            $registry: '@doctrine'
+    Dotit\SyliusEaseOfPaymentPlugin\Repository\ProductEaseOfPaymentRepository:
+        arguments:
+            $registry: '@doctrine'
+    # Services for your services
+    Dotit\SyliusEaseOfPaymentPlugin\Service\EaseOfPaymentService:
+        arguments:
+            $modalityRepository: '@Dotit\SyliusEaseOfPaymentPlugin\Repository\ModalityRepository'

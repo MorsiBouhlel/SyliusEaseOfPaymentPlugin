@@ -1,0 +1,33 @@
+sylius_grid:
+    templates:
+    grids:
+        dotit_sylius_ease_of_payment_plugin_admin_ease_of_payment:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: Dotit\SyliusEaseOfPaymentPlugin\Entity\Modality
+            fields:
+                nbOfMonths:
+                    type: string
+                    label: 'dotit.grid.modality.nb_of_months'
+                interestRate:
+                    type: string
+                    label: 'dotit.grid.modality.interest_rate'
+                minPrice:
+                    type: string
+                    label: 'dotit.grid.modality.min_price'
+                maxPrice:
+                    type: string
+                    label: 'dotit.grid.modality.max_price'
+                allTaxons:
+                    type: string
+                    label: 'dotit.grid.modality.all_taxons'
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
