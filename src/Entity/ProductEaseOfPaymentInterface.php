@@ -3,8 +3,9 @@
 namespace Dotit\SyliusEaseOfPaymentPlugin\Entity;
 
 use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface ProductEaseOfPaymentInterface
+interface ProductEaseOfPaymentInterface extends ResourceInterface
 {
     public function getEaseOfPaymentModalities(): array;
 
