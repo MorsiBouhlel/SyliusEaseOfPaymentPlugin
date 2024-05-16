@@ -40,7 +40,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
              if($allTaxons){
                  if($price>$minPrice && $price<$maxPrice){
                      $productEaseOfPayment->setHaveProductEaseOfPaymentModalities(true);
-                     $modalitltyPrice=($price*$interestRate)/$nbOfMonths;
+                     $modalitltyPrice=ceil(($price * $interestRate) / $nbOfMonths);
                      $easeOfPaymentModalities[$nbOfMonths]= (int)$modalitltyPrice;
                  }
              }
