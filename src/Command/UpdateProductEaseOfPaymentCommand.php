@@ -51,7 +51,7 @@ class UpdateProductEaseOfPaymentCommand extends Command
         foreach ($products as $product) {
             if($product->isEnabled()){
                 $firstProductVariant = $product->getVariants()->first();
-                if (!$product->hasVariants())) {
+                if (!$product->hasVariants()) {
                     continue;
                 }
                 $channelPricing = $firstProductVariant->getChannelPricingForChannel($defaultChannel);
